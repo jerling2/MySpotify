@@ -1,0 +1,66 @@
+:root {
+    /* Color palette */
+    --color-1-100: hsl(72, 100%, 50%);
+    --color-1-30: hsl(72, 30%, 50%);
+    --color-1-shadow-L5: hsl(72, 100%, 5%);
+    --color-1-shadow-L15: hsl(72, 100%, 15%);
+    --color-2-100: #ff6a00;
+    --color-2-30: hsl(25, 30%, 50%);
+    --color-3-100: hsl(299, 100%, 50%);
+    --color-3-30: hsl(299, 30%, 50%);
+    --color-4-100: hsl(259, 100%, 50%);
+    --color-4-30: hsl(259, 30%, 50%);
+    --color-bg-100: hsl(0, 0%, 100%);
+    --color-bg-25: hsl(0, 0%, 25%);
+    --color-bg-10: hsl(0, 0%, 10%);
+
+    /* Typography */
+    font-size: 16px;
+    --font-main: Verdana, Geneva, Tahoma, sans-serif;
+    --font-size-sm: 0.75rem;
+    --font-size-base: 1rem;
+
+    /* Bacgrounds */
+    --background-1: var(--color-bg-10);
+
+    /* Shadows */
+    --shadow-white: var(--color-bg-100);
+    --shadow-grey: var(--color-bg-25);
+    --shadow-1-dark: var(--color-1-shadow-L5);
+    --shadow-1-light: var(--color-1-shadow-L15);
+    --color-text: #333;
+
+    /* Border Radii */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+
+    /* Buttons */
+    --button-border-1: 1px solid white;
+    --button-font-1: var(--font-size-sm) var(--font-main);
+    --button-color-1: white;
+    --button-padding-1: 0.5rem;
+
+    /* Spacing */
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 32px;
+}
+
+.button-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 4rem;
+    padding: var(--button-padding-1);
+    font: var(--button-font-1);
+    color: var(--button-color-1);
+    border-radius: var(--border-radius-lg);
+    border: var(--button-border-1);
+}
+
+.button-1:hover {
+    border-color: red;
+    color: red;
+}
