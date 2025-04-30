@@ -19,6 +19,7 @@
     --font-main: Verdana, Geneva, Tahoma, sans-serif;
     --font-size-sm: 0.75rem;
     --font-size-base: 1rem;
+    --font-size-lg: 2rem;
 
     /* Bacgrounds */
     --background-1: var(--color-bg-10);
@@ -40,6 +41,9 @@
     --button-font-1: var(--font-size-sm) var(--font-main);
     --button-color-1: white;
     --button-padding-1: 0.5rem;
+
+    /* Headers */
+    --header-font-1: var(--font-size-lg) var(--font-main);
 
     /* Spacing */
     --spacing-small: 8px;
