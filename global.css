@@ -1,70 +1,65 @@
 :root {
     /* Color palette */
-    --color-1-100: hsl(72, 100%, 50%);
-    --color-1-30: hsl(72, 30%, 50%);
-    --color-1-shadow-L5: hsl(72, 100%, 5%);
-    --color-1-shadow-L15: hsl(72, 100%, 15%);
+    --color-1-100: #ccff00;
+    --color-1-30: #96a659
+    --color-1-shadow-L5: #141a00
+    --color-1-shadow-L15: #3d4d00;
     --color-2-100: #ff6a00;
     --color-2-30: hsl(25, 30%, 50%);
-    --color-3-100: hsl(299, 100%, 50%);
-    --color-3-30: hsl(299, 30%, 50%);
-    --color-4-100: hsl(259, 100%, 50%);
-    --color-4-30: hsl(259, 30%, 50%);
-    --color-bg-100: hsl(0, 0%, 100%);
-    --color-bg-25: hsl(0, 0%, 25%);
-    --color-bg-10: hsl(0, 0%, 10%);
+    --color-3-100: #fb00ff;
+    --color-3-30: #a459a6;
+    --color-4-100: #5100ff;
+    --color-4-30: #7159a6;
+    --color-bg-100: #ffffff;
+    --color-bg-75: hsl(0, 0%, 75%);
+    --color-bg-25: #404040;
+    --color-bg-10: #1a1a1a;
+    --color-bg-5: hsl(0, 0%, 5%);
 
     /* Typography */
     font-size: 16px;
-    --font-main: Verdana, Geneva, Tahoma, sans-serif;
+    --font-family: Verdana, Geneva, Tahoma, sans-serif;
     --font-size-sm: 0.75rem;
     --font-size-base: 1rem;
-    --font-size-lg: 2rem;
+    --font-size-md: 1.25rem;
+    --font-size-lg: 1.50rem;
 
-    /* Bacgrounds */
+    /* Backgrounds */
     --background-1: var(--color-bg-10);
-
-    /* Shadows */
-    --shadow-white: var(--color-bg-100);
-    --shadow-grey: var(--color-bg-25);
-    --shadow-1-dark: var(--color-1-shadow-L5);
-    --shadow-1-light: var(--color-1-shadow-L15);
-    --color-text: #333;
 
     /* Border Radii */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
     --border-radius-lg: 12px;
-
-    /* Buttons */
-    --button-border-1: 1px solid white;
-    --button-font-1: var(--font-size-sm) var(--font-main);
-    --button-color-1: white;
-    --button-padding-1: 0.5rem;
-
-    /* Headers */
-    --header-font-1: var(--font-size-lg) var(--font-main);
-
-    /* Spacing */
-    --spacing-small: 8px;
-    --spacing-medium: 16px;
-    --spacing-large: 32px;
 }
 
 .button-1 {
+    /* 
+    Description: gradient border, medium small-caps gradient font, transparent content area
+    Important: must be placed on background-1 to look correct.
+    Usuage: for buttons that redirect the user to an external site. 
+    */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    height: 4rem;
-    padding: var(--button-padding-1);
-    font: var(--button-font-1);
-    color: var(--button-color-1);
-    border-radius: var(--border-radius-lg);
-    border: var(--button-border-1);
-}
-
-.button-1:hover {
-    border-color: red;
-    color: red;
+    font-variant: small-caps;
+    font-size: var(--font-size-md);
+    color: transparent;
+    border: 2px solid transparent;
+    background-origin: border-box;
+    /* ^ this expands the background image from the content to the border */
+    background-image: 
+        linear-gradient(135deg, var(--color-3-100), var(--color-2-100)),
+        /* ^ text layer is a horizontal gradient */
+        linear-gradient(135deg, var(--color-bg-5), var(--color-bg-10)), 
+        /* ^ padding layer is a solid color. */
+        linear-gradient(135deg, var(--color-3-100), var(--color-2-100));
+        /* ^ border layer is a horizontal gradient */
+    background-clip: text, padding-box, border-box;
+    /* clip top, middle, and bottom layers to text, padding, border respectively */
+    min-height: 4rem;
+    min-width: 5rem;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-lg); 
 }
