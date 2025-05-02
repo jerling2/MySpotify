@@ -5,13 +5,8 @@ const main = () => {
 
     // Timeline animation
     const timelineContainer = document.getElementById('dynamic-timeline-container');
-
     const timeline = document.getElementById('timeline-title');
-    const timelineRect = timeline.getBoundingClientRect();
-
-    const timelineContainerRect = timelineContainer.getBoundingClientRect();
-    const timelineAnimationStart = timelineContainerRect.left;
-    const timelineAnimationEnd = timelineContainerRect.width - timelineRect.width;
+    let { timelineAnimationStart, timelineAnimationEnd } = handleTimelineResize(timelineContainer, timeline);
 
     linkToCode.addEventListener('click', () =>
         redirect('https://github.com/jerling2/MySpotify')
@@ -21,14 +16,23 @@ const main = () => {
         redirect('https://open.spotify.com/playlist/7K2ImbL3CVtGexjq7arClB?si=9368b5e540a242e6&pt=e5f20d63cfd5b66b2b63f5e4af115d09')
     );
 
-    scrollContainer.addEventListener('scroll', () => {
-        const f = scrollProgress(scrollContainer);
-        const l = lerp(
-            timelineAnimationStart, 
-            timelineAnimationEnd, 
-            f
+    window.addEventListener('resize', () => {
+        ({ timelineAnimationStart, timelineAnimationEnd } = handleTimelineResize(timelineContainer, timeline));
+        const offset = calcTimelineOffset(
+            scrollContainer,
+            timelineAnimationStart,
+            timelineAnimationEnd
         );
-        moveTimeline(timeline, l);
+        moveTimeline(timeline, offset);
+    });
+
+    scrollContainer.addEventListener('scroll', () => {
+        const offset = calcTimelineOffset(
+            scrollContainer,
+            timelineAnimationStart,
+            timelineAnimationEnd
+        );
+        moveTimeline(timeline, offset);
     });
 }
 
@@ -46,9 +50,25 @@ function redirect(url) {
     window.location.href = url;
 }
 
+function handleTimelineResize(timelineContainer, timeline) {
+    const timelineRect = timeline.getBoundingClientRect();
+    const timelineContainerRect = timelineContainer.getBoundingClientRect();
+    const timelineAnimationStart = timelineContainerRect.left;
+    const timelineAnimationEnd = timelineContainerRect.width - timelineRect.width;
+    return {
+        timelineAnimationStart, 
+        timelineAnimationEnd
+    };
+}
+
+function calcTimelineOffset(htmlElement, start, end) {
+    const f = scrollProgress(htmlElement);
+    const l = lerp(start, end, f);
+    return l;
+}
+
 function moveTimeline(htmlElement, offset) {
     htmlElement.style.left = `${offset}px`;
 }
 
 main();
-
