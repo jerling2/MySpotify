@@ -4,9 +4,9 @@
     --color-1-30: #96a659
     --color-1-shadow-L5: #141a00
     --color-1-shadow-L15: #3d4d00;
-    --color-2-100: #ff6a00;
+    --color-2-100: rgba(255, 106, 0);
     --color-2-30: hsl(25, 30%, 50%);
-    --color-3-100: #fb00ff;
+    --color-3-100: rgb(251, 0, 255);
     --color-3-30: #a459a6;
     --color-4-100: #5100ff;
     --color-4-30: #7159a6;
@@ -62,4 +62,10 @@
     min-width: 5rem;
     padding: 0.5rem;
     border-radius: var(--border-radius-lg); 
+    transition: all 0.5s ease;
+}
+
+.button-1:hover {
+    transform: scale(1.1);
+    box-shadow: -4px -4px 15px 5px rgba(255, 106, 0, 0.3), 4px 4px 15px 5px rgba(251, 0, 255, 0.3);
 }
