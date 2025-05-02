@@ -73,12 +73,17 @@
     box-shadow: -4px -4px 15px 5px rgba(255, 106, 0, 0.3), 4px 4px 15px 5px rgba(251, 0, 255, 0.3);
 }
 
+.song-container {
+    display: flex;
+    position: relative;
+    justify-self: center;
+    width: 80%;
+    aspect-ratio: 1 / 1;
+}
+
 .disc-cover {
     display: flex;
-    width: 50%;
-    aspect-ratio: 1 / 1;
-    background-color: white;
+    position: relative;
     overflow: hidden;
     border-radius: var(--border-radius-lg);
-    justify-self: center;
 }

@@ -56,8 +56,8 @@ body {
 #music-scroll-container {
     width: 100%;
     flex: 1;
+    padding-top: 4rem;
     overflow-y: scroll;
-
     text-align: justify;
 }
 
