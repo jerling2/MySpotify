@@ -126,3 +126,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.timeline-timestamp {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    font-size: var(--font-size-base);
+    font-variant: small-caps;
+}

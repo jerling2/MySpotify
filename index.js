@@ -7,6 +7,18 @@ const main = () => {
     const timelineContainer = document.getElementById('dynamic-timeline-container');
     const timeline = document.getElementById('timeline-marker');
     let { timelineAnimationStart, timelineAnimationEnd } = handleTimelineResize(timelineContainer, timeline);
+    
+    // Timeline timestamps
+    const highTimestamp = document.getElementById('timeline-timestamp--high');
+    const highTimestampTarget = document.getElementById('timeline-timestamp--high-here');
+    placeTimestamp(scrollContainer, timelineContainer, highTimestamp, highTimestampTarget);
+    const undergradTimestamp = document.getElementById('timeline-timestamp--undergrad');
+    const undergradTimestampTarget = document.getElementById('timeline-timestamp--undergrad-here');
+    placeTimestamp(scrollContainer, timelineContainer, undergradTimestamp, undergradTimestampTarget);
+    const graduateTimestamp = document.getElementById('timeline-timestamp--graduate');
+    const graduateTimestampTarget = document.getElementById('timeline-timestamp--graduate-here');
+    placeTimestamp(scrollContainer, timelineContainer, graduateTimestamp, graduateTimestampTarget);
+
 
     linkToCode.addEventListener('click', () =>
         redirect('https://github.com/jerling2/MySpotify')
@@ -23,7 +35,7 @@ const main = () => {
             timelineAnimationStart,
             timelineAnimationEnd
         );
-        moveTimeline(timeline, offset);
+        translateX(timeline, offset);
     });
 
     scrollContainer.addEventListener('scroll', () => {
@@ -32,14 +44,21 @@ const main = () => {
             timelineAnimationStart,
             timelineAnimationEnd
         );
-        console.log(`Scroll offset: ${offset}`);
-        moveTimeline(timeline, offset);
+        translateX(timeline, offset);
     });
 }
 
 function scrollProgress(htmlElement) {
     const maxScroll = htmlElement.scrollHeight - htmlElement.clientHeight;
+    console.log(maxScroll);
+
     const numScroll =  htmlElement.scrollTop / maxScroll;
+    return Math.round(numScroll * 100) / 100;
+}
+
+function scrollLocation(parent, target) {
+    const maxScroll = parent.scrollHeight - parent.clientHeight;
+    const numScroll = target.offsetTop / maxScroll;
     return Math.round(numScroll * 100) / 100;
 }
 
@@ -68,7 +87,26 @@ function calcTimelineOffset(htmlElement, start, end) {
     return l;
 }
 
-function moveTimeline(htmlElement, offset) {
+function calcTimelineTargetOffset(parent, target, start, end) {
+    const f = scrollLocation(parent, target);
+    const l = lerp(start, end, f);
+    return l;
+}
+
+function placeTimestamp(scrollContainer, timelineContainer, timestamp, target) {
+    const timelineContainerRect = timelineContainer.getBoundingClientRect();
+    const timestampRect = timestamp.getBoundingClientRect();
+    const maxPosition = timelineContainerRect.width;
+    const offset = calcTimelineTargetOffset(
+        scrollContainer,
+        target,
+        0,
+        maxPosition
+    );
+    translateX(timestamp, offset - timestampRect.width / 2);
+}
+
+function translateX(htmlElement, offset) {
     htmlElement.style.left = `${offset}px`;
 }
 
