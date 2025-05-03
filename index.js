@@ -5,7 +5,7 @@ const main = () => {
 
     // Timeline animation
     const timelineContainer = document.getElementById('dynamic-timeline-container');
-    const timeline = document.getElementById('timeline-title');
+    const timeline = document.getElementById('timeline-marker');
     let { timelineAnimationStart, timelineAnimationEnd } = handleTimelineResize(timelineContainer, timeline);
 
     linkToCode.addEventListener('click', () =>
@@ -32,6 +32,7 @@ const main = () => {
             timelineAnimationStart,
             timelineAnimationEnd
         );
+        console.log(`Scroll offset: ${offset}`);
         moveTimeline(timeline, offset);
     });
 }
@@ -53,7 +54,7 @@ function redirect(url) {
 function handleTimelineResize(timelineContainer, timeline) {
     const timelineRect = timeline.getBoundingClientRect();
     const timelineContainerRect = timelineContainer.getBoundingClientRect();
-    const timelineAnimationStart = timelineContainerRect.left;
+    const timelineAnimationStart = 0; //< relative to parent (aka. not the window)
     const timelineAnimationEnd = timelineContainerRect.width - timelineRect.width;
     return {
         timelineAnimationStart, 
