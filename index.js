@@ -11,12 +11,12 @@ const main = () => {
     // Timeline timestamps
     const highTimestamp = document.getElementById('timeline-timestamp--high');
     const highTimestampTarget = document.getElementById('timeline-timestamp--high-here');
-    placeTimestamp(scrollContainer, timelineContainer, highTimestamp, highTimestampTarget);
     const undergradTimestamp = document.getElementById('timeline-timestamp--undergrad');
     const undergradTimestampTarget = document.getElementById('timeline-timestamp--undergrad-here');
-    placeTimestamp(scrollContainer, timelineContainer, undergradTimestamp, undergradTimestampTarget);
     const graduateTimestamp = document.getElementById('timeline-timestamp--graduate');
     const graduateTimestampTarget = document.getElementById('timeline-timestamp--graduate-here');
+    placeTimestamp(scrollContainer, timelineContainer, highTimestamp, highTimestampTarget);
+    placeTimestamp(scrollContainer, timelineContainer, undergradTimestamp, undergradTimestampTarget);
     placeTimestamp(scrollContainer, timelineContainer, graduateTimestamp, graduateTimestampTarget);
 
 
@@ -36,6 +36,9 @@ const main = () => {
             timelineAnimationEnd
         );
         translateX(timeline, offset);
+        placeTimestamp(scrollContainer, timelineContainer, highTimestamp, highTimestampTarget);
+        placeTimestamp(scrollContainer, timelineContainer, undergradTimestamp, undergradTimestampTarget);
+        placeTimestamp(scrollContainer, timelineContainer, graduateTimestamp, graduateTimestampTarget);
     });
 
     scrollContainer.addEventListener('scroll', () => {
@@ -50,8 +53,6 @@ const main = () => {
 
 function scrollProgress(htmlElement) {
     const maxScroll = htmlElement.scrollHeight - htmlElement.clientHeight;
-    console.log(maxScroll);
-
     const numScroll =  htmlElement.scrollTop / maxScroll;
     return Math.round(numScroll * 100) / 100;
 }
