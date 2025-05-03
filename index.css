@@ -109,7 +109,7 @@ body {
 
 /* IMPORTANT: the custom scrollbar doesn't render without this */
 #thank-you-content-container::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 #thank-you-content-container::-webkit-scrollbar-track {
@@ -117,8 +117,8 @@ body {
 }
 
 #thank-you-content-container::-webkit-scrollbar-thumb {
-    background: var(--color-background-2);
-    border-radius: 6px;
+    background: var(--color-bg-25);
+    border-radius: var(--border-radius-lg);
 }
 
 #thank-you-content-container:hover::-webkit-scrollbar-thumb {
