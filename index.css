@@ -82,6 +82,28 @@ body {
     overflow-y: scroll;
 }
 
+/* IMPORTANT: the custom scrollbar doesn't render without this */
+#thank-you-content-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#thank-you-content-container::-webkit-scrollbar-track {
+    background: none;
+}
+
+#thank-you-content-container::-webkit-scrollbar-thumb {
+    background: var(--color-background-2);
+    border-radius: 6px;
+}
+
+#thank-you-content-container:hover::-webkit-scrollbar-thumb {
+    background: var(--color-bg-25);
+}
+
+#thank-you-content-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 #thank-you-content-container>h1 {
     text-align: center;
 }
