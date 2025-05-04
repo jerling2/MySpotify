@@ -86,12 +86,17 @@ body {
     text-align: justify;
 }
 
+#music-scroll-container>p {
+    margin-top: 4rem;
+}
+
 #music-scroll-container::-webkit-scrollbar {
     display: none;
 }
 
 #thank-you-container {
     flex-grow: 1;
+    min-width: 30%;
     max-width: 30%;
     box-shadow: inset 3px 0 15px 1px var(--background-3);
     background: var(--background-1);
