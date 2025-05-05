@@ -19,6 +19,17 @@ const main = () => {
     placeTimestamp(scrollContainer, timelineContainer, undergradTimestamp, undergradTimestampTarget);
     placeTimestamp(scrollContainer, timelineContainer, graduateTimestamp, graduateTimestampTarget);
 
+    // Click the 'timeline-vector' to quickly & smoothly scroll the 'music-scroll-container'. 
+    const timelineVector = document.getElementById('timeline-vector');
+    timelineVector.addEventListener('click', (e) => {
+        const width = timelineVector.offsetWidth;
+        const f = e.offsetX / width;
+        const l = lerp(0, scrollContainer.scrollHeight, f);
+        scrollContainer.scrollTo({
+            top: l,
+            behavior: "smooth"
+        });
+    });
 
     linkToCode.addEventListener('click', () =>
         redirect('https://github.com/jerling2/MySpotify')
