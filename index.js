@@ -31,12 +31,12 @@ const main = () => {
         });
     });
 
+    /* These statements are equivalent to <a href='[url]' target="_blank> ... </a> */
     linkToCode.addEventListener('click', () =>
-        redirect('https://github.com/jerling2/MySpotify')
+        window.open('https://github.com/jerling2/MySpotify', target='_blank')
     );
-
     linkToPlaylist.addEventListener('click', () => 
-        redirect('https://open.spotify.com/playlist/7K2ImbL3CVtGexjq7arClB?si=9368b5e540a242e6&pt=e5f20d63cfd5b66b2b63f5e4af115d09')
+        window.open('https://open.spotify.com/playlist/7K2ImbL3CVtGexjq7arClB?si=9368b5e540a242e6&pt=e5f20d63cfd5b66b2b63f5e4af115d09', target='_blank')
     );
 
     window.addEventListener('resize', () => {
@@ -76,10 +76,6 @@ function scrollLocation(parent, target) {
 
 function lerp(start, end, f) {
     return start + end * f;
-}
-
-function redirect(url) {
-    window.location.href = url;
 }
 
 function handleTimelineResize(timelineContainer, timeline) {

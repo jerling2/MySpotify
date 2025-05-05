@@ -36,6 +36,27 @@
     --border-radius-lg: 12px;
 }
 
+
+*, *::before, *::after {
+    font-family: var(--font-family);
+    font-size: var(font-size-base);
+    box-sizing: border-box;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: var(--color-3-100);
+}
+
+/* This is to make sure paragraph text is above album containers. */
+p {
+    position: relative; /*< Necessary for z-index to work. */
+    z-index: 1;
+}
+
 .button-1 {
     /* 
     Description: gradient border, medium small-caps gradient font, transparent content area
@@ -80,6 +101,7 @@
     justify-self: center;
     width: 50%;
     aspect-ratio: 1 / 1;
+    z-index: 1;
 }
 
 .disc-cover {
@@ -119,9 +141,7 @@
     transform-origin: top left; /* Transform around the top-left corner */
     width: 100%;
     transform: rotate(270deg) translateX(-100%) translateY(-1.5rem);
-    /* transform: rotate(270deg); */
     text-align: center;
-    /* background-color: white; */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -140,6 +160,7 @@
 }
 
 .listened-on>span {
+    z-index: 1;
     font-size: var(--font-size-md);
     font-variant: small-caps;
 }
@@ -151,4 +172,30 @@
     left: 0;
     font-size: var(--font-size-base);
     font-variant: small-caps;
+}
+
+.spoiler-message {
+    cursor: pointer;
+    background-color: var(--color-bg-25);
+    color: var(--color-bg-25);
+}
+
+
+
+.spoiler-message:hover {
+    background-color: transparent;
+    color: white;
+}
+
+/* There's an anchor in the spoiler-message, so these make sure that the anchor is correctly hidden. */
+.spoiler-message>a {
+    color: var(--color-bg-25);
+}
+
+.spoiler-message:hover>a {
+    color: white;
+}
+
+.spoiler-message:hover>a:hover {
+    color: var(--color-3-100);
 }
