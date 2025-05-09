@@ -15,9 +15,12 @@ const main = () => {
     const undergradTimestampTarget = document.getElementById('timeline-timestamp--undergrad-here');
     const graduateTimestamp = document.getElementById('timeline-timestamp--graduate');
     const graduateTimestampTarget = document.getElementById('timeline-timestamp--graduate-here');
+    const strikeTimestamp = document.getElementById('timeline-timestamp--strike');
+    const strikeTimestampTarget = document.getElementById('timeline-timestamp--strike-here');
     placeTimestamp(scrollContainer, timelineContainer, highTimestamp, highTimestampTarget);
     placeTimestamp(scrollContainer, timelineContainer, undergradTimestamp, undergradTimestampTarget);
     placeTimestamp(scrollContainer, timelineContainer, graduateTimestamp, graduateTimestampTarget);
+    placeTimestamp(scrollContainer, timelineContainer, strikeTimestamp, strikeTimestampTarget);
 
     // Click the 'timeline-vector' to quickly & smoothly scroll the 'music-scroll-container'. 
     const timelineVector = document.getElementById('timeline-vector');
