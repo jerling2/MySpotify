@@ -54,6 +54,7 @@ a:hover {
 /* This is to make sure paragraph text is above album containers. */
 p {
     position: relative; /*< Necessary for z-index to work. */
+    line-height: 1.5;
     z-index: 1;
 }
 
